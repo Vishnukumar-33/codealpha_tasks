@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+
+    input:focus, select:focus {
+      border-color: #667eea;
+      outline: none;
+      box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #667eea;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #5a67d8;
+    }
+
+    .signup-links {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .signup-links a {
+      color: #667eea;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .signup-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <select id="role">
+      <option value="">Select Role</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+
+    <div class="signup-links">
+      <p>Don't have an account?</p>
+      <a href="signup-admin.html">Admin Sign Up</a> |
+      <a href="signup-user.html">User Sign Up</a> 
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const role = document.getElementById("role").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!role || !username || !password) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const key = role === "admin" ? "admins" : "users";
+      const users = JSON.parse(localStorage.getItem(key)) || [];
+
+      const matchedUser = users.find(user => user.username === username && user.password === password);
+
+      if (matchedUser) {
+        alert("Login successful!");
+        window.location.href = role === "admin" ? "admin.html" : "quiz.html";
+      } else {
+        alert("Invalid credentials. Please sign up or try again.");
+      }
+    }
+  </script>
+</body>
+</html>

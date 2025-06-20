@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Flashcard Quiz</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .flashcard {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      min-height: 50px;
+      margin: 10px 0;
+      box-shadow: 0 4px 8px rgba(233, 225, 225, 0.05);
+      font-size: 16px;
+    }
+
+    button {
+      margin: 6px 4px;
+      padding: 12px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .btn-green {
+      background-color: #4CAF50;
+    }
+
+    .btn-blue {
+      background-color: #2196F3;
+    }
+
+    .btn-red {
+      background-color: #f44336;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Flashcard Quiz</h2>
+    <div class="flashcard" id="flashcard">
+      <p id="card-content">Loading...</p>
+    </div>
+    <button class="btn-green" onclick="showAnswer()">Show Answer</button><br>
+    <button class="btn-blue" onclick="prevCard()">Previous</button>
+    <button class="btn-blue" onclick="nextCard()">Next</button><br><br>
+    <a href="index.html"><button class="btn-red">Logout</button></a>
+  </div>
+
+  <script>
+    const flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
+    let currentIndex = 0;
+    let showAns = false;
+
+    function updateCard() {
+      const content = document.getElementById("card-content");
+      if (flashcards.length === 0) {
+        content.innerText = "No flashcards available.";
+        return;
+      }
+      const card = flashcards[currentIndex];
+      content.innerText = showAns ? card.answer : card.question;
+    }
+
+    function showAnswer() {
+      if (flashcards.length === 0) return;
+      showAns = !showAns;
+      updateCard();
+    }
+
+    function nextCard() {
+      if (flashcards.length === 0) return;
+      currentIndex = (currentIndex + 1) % flashcards.length;
+      showAns = false;
+      updateCard();
+    }
+
+    function prevCard() {
+      if (flashcards.length === 0) return;
+      currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+      showAns = false;
+      updateCard();
+    }
+
+    updateCard();
+  </script>
+</body>
+</html>
