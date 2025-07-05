@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness Tracker Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Fitness Tracker</h1>
+
+    <div class="form-section">
+        <input type="number" id="steps" placeholder="Steps Walked">
+        <input type="number" id="workout" placeholder="Workout (minutes)">
+        <input type="number" id="calories" placeholder="Calories Burned">
+        <button onclick="addFitnessData()">Add Activity</button>
+    </div>
+
+    <div class="summary-section">
+        <h2>Today's Summary</h2>
+        <p>Steps: <span id="totalSteps">0</span></p>
+        <p>Workout Time: <span id="totalWorkout">0</span> minutes</p>
+        <p>Calories Burned: <span id="totalCalories">0</span></p>
+    </div>
+
+    <div class="progress-section">
+        <h2>Weekly Progress</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        <p><span id="progressPercent">0%</span> of weekly goal</p>
+    </div>
+
+    <button class="signout-btn" onclick="signOut()">Sign Out</button>
+</div>
+
+<script src="tracker.js"></script>
+</body>
+</html>

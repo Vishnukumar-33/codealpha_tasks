@@ -1,0 +1,82 @@
+body {
+    background: linear-gradient(135deg, #48c6ef, #6f86d6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+}
+
+button {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 8px 4px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #4338ca;
+}
+
+.summary-section, .progress-section {
+    margin-top: 15px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    background: #eee;
+    height: 16px;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.progress {
+    background: #4f46e5;
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.signout-btn {
+    margin-top: 15px;
+    background: crimson;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.signout-btn:hover {
+    background: darkred;
+}
