@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Learning Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Language Learning</h1>
+
+    <div class="category-section">
+        <button onclick="showVocabulary()">Vocabulary</button>
+        <button onclick="showGrammar()">Grammar</button>
+        <button onclick="showQuiz()">Take Quiz</button>
+    </div>
+
+    <div id="lessonContent" class="lesson-section"></div>
+
+    <button class="signout-btn" onclick="signOut()">Sign Out</button>
+</div>
+
+<script src="data.js"></script>
+<script src="lessons.js"></script>
+</body>
+</html>
